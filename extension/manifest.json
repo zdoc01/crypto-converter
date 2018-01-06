@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "CryptoConverter",
+  "description": "Convert crypto currency values to USD",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html",
+    "default_title": "CryptoConverter"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.cryptokitties.co/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "permissions": [
+    "tabs",
+    "https://www.cryptokitties.co/*"
+  ]
+}

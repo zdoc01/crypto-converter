@@ -2,6 +2,7 @@ console.log = console.log.bind(console, '[crypto]');
 console.error = console.error.bind(console, '[crypto]');
 
 const COIN_VAL_REGEX = /[0-9]\.[0-9]*/g; // e.g. 0.0934, 1.1960, etc.
+const GET_RATE = 'rate:get';
 
 const findNodes = (...selectors) => {
 	let nodes = [];
@@ -49,7 +50,7 @@ const decorateValue = (node, value, currentRate) => {
 };
 
 const getCurrentRate = () => new Promise((resolve, reject) => {
-	const msg = { type: 'get:rate' };
+	const msg = { type: GET_RATE };
 	chrome.runtime.sendMessage(msg, (res) => {
 	  if (res) {
 			resolve(res);
@@ -78,7 +79,7 @@ const main = () => {
 		.catch(console.error);
 };
 
-window.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', (event) => {
 	console.log('ready to rock');
 	setTimeout(main, 500); // give scripts time to render
 });

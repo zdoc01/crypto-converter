@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "CryptoConverter",
-  "description": "Convert crypto currency values to USD",
+  "description": "Convert cryptocurrency values to USD",
   "version": "0.0.1",
 
   "browser_action": {
@@ -25,6 +25,7 @@
   },
 
   "permissions": [
+    "storage",
     "tabs",
     "https://www.cryptokitties.co/*"
   ]
